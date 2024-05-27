@@ -116,7 +116,7 @@ article h3{
     right: 5px;
     padding: 10px 20px;
     color: #fff;
-    background-image: linear-gradient(45deg, #df4881, #c430d7);
+    background-image: linear-gradient(45deg, #0ef, #c430d7);
     font-size: 14px;
     border-radius: 30px;
     border-top-right-radius: 0;
@@ -130,7 +130,7 @@ article h3{
     left: 5px;
     padding: 10px 20px;
     color: #fff;
-    background-image: linear-gradient(45deg, #df4881, #c430d7);
+    background-image: linear-gradient(45deg, #0ef, #c430d7);
     font-size: 14px;
     border-radius: 30px;
     border-top-right-radius: 0;

@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<html lan="en">
+<html lang="en">
 
 <head>
-<link rel="stylesheet" href="TaskHub-reg-form.css">
-    <title>sign-up</title>
+    <link rel="stylesheet" href="TaskHub-reg-form.css">
+    <title>Sign Up</title>
 </head>
 
-<div class="signup-form">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <button type="submit">Sign Up</button>
+<body>
+<div class="wrapper">
+    <div class="form-wrapper sign-up">
+        <form action="">
+            <h2>Sign Up</h2>
+            <div class="input-group">
+                <input type="text" id="username" required>
+                <label for="username">Username</label>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="remember">
+                <label><input type="checkbox">I agree to the terms and conditions</label>
+            </div>
+            <button type="submit">Sign Up</button>
+            <div class="signUp-Link">
+                <p>Already have an account? <a href="#" class="SignUpBtn-Link">Sign In</a></p>
+            </div>
+        </form>
+    </div>
 </div>
+<script src="script.js"></script>
+</body>
 
+</html>
