@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #This file is my Database Models
 
 from flask_sqlalchemy import SQLAlchemy

@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 #This is my API Resources
 
 from flask import request, session

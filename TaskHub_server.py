@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 from flask import Flask
 from flask_restful import Api
 from TaskHub_models import db
