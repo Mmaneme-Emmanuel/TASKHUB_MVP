@@ -19,13 +19,13 @@ class SignupResource(Resource):
         if User.query.filter_by(email=email).first():
             return {'message': 'Email already registered'}, 400
 
-        hashed_password = generate_password_hash(password, method='sha256')
+        hashed_password = generate_password_hash(password)
         new_user = User(username=username, password=hashed_password, email=email)
         db.session.add(new_user)
         db.session.commit()
 
         return {'message': 'Signup successful'}, 201
-
+         
 # API resource class for signin
 class SigninResource(Resource):
     def post(self):
@@ -35,31 +35,56 @@ class SigninResource(Resource):
 
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.password, password):
-            session['user_id'] = user.id
-            return {'message': 'Signin successful'}, 200
+            # session['user_id'] = user.id
+            return {
+                'message': 'Signin successful',
+                'data': user.toDict(),
+                }, 200
         else:
             return {'message': 'Invalid username or password'}, 401
 
 # API get resource class for user todo list
 class TodoResource(Resource):
     def get(self):
-        if 'user_id' not in session:
-            return {'message': 'Signin required'}, 401
+        userId = request.args.get('user_id')
 
-        user_tasks = Task.query.filter_by(user_id=session['user_id']).all()
-        tasks = [{'id': task.id, 'task': task.task} for task in user_tasks]
-        return {'tasks': tasks}, 200
+        if not userId:
+            return {
+                "status": "fail",
+                "message": "Bad Request"
+            }, 400
+
+        user_tasks = Task.query.filter_by(user_id=userId).all()
+        tasks = [task.toDict() for task in user_tasks]
+        return {
+            'status': 'Success',
+            'tasks': tasks
+            }, 200
+
 
     def post(self):
-        if 'user_id' not in session:
-            return {'message': 'Signin required'}, 401
-
         data = request.get_json()
+
+        if not data:
+            return {
+                "status": "fail",
+                "message": "Bad Request"
+            }, 400
+        
+        if 'user_id' not in data:
+            return {'message': 'Signin required'}, 401
+        
         task_description = data.get('task')
-        user_id = session['user_id']
+        user_id = data['user_id']
+
+        if not task_description:
+            return {'message': 'Task description cannot be empty'}, 400
 
         new_task = Task(user_id=user_id, task=task_description)
         db.session.add(new_task)
         db.session.commit()
 
-        return {'message': 'Task added successfully'}, 201
+        return {
+            'message': 'Task added successfully',
+            'data': new_task.toDict()
+        }, 201

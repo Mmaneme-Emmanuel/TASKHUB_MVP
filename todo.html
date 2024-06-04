@@ -20,11 +20,17 @@
 
             <main>
                 <h1>What are you planning</h1>
-                <input class="add-task" type="text" placeholder="Add a task.">
-                <button class="submit-button" type="submit">Create!</button>
-                <button class="todo-list" type="list">My list of plans</button>
+                <!-- Form to add a task -->
+                <form action="submit" id="createTask" method="post">
+                    <input class="add-task" type="text" name="task" placeholder="Add a task." required>
+                    <button class="submit-button" type="submit">Add</button>
+                </form>
+                
+                <div class="todo-list" id="todoList">My list of plans</div>
             </main>
         </div>
     </div>
+    <script src="scripts/todo.post.js"></script>
+    <script src="scripts/todo.get.js"></script>
 </body>
 </html>

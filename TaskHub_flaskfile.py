@@ -86,7 +86,7 @@ def todo():
 
  # Fetch all tasks for the logged-in user
     user_tasks = Task.query.filter_by(user_id=session['user_id']).all()
-    return render_template('todo.html', tasks=user_tasks)
+    return render_template('#', tasks=user_tasks)
 
 if __name__ == "__main__":
 # Create the database and the database table(s)

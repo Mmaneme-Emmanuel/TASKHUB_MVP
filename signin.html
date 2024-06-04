@@ -12,8 +12,7 @@
     <div class="wrapper">
         <div class="form-wrapper">
             <h2>Sign in</h2>
-            <!--h3>to continue to your TaskHub account</h3-->
-            <form action="{{ url_for('signin') }}" method="post">
+            <form action="'http://127.0.0.1:5000/api" id="signinForm" method="post">
                 <div class="input-group">
                     <input type="text" name="username" required>
                     <label for="">Username</label>
@@ -26,14 +25,15 @@
                     <label><input type="checkbox">Remember me</label>
                 </div>
                 
-                <button class="login" type="button" onclick="window.location.href='todo.html'">Login</button>
+                <button class="login" type="submit">Login</button>
+            </form>
                 
                 <div class="signUp-Link">
-                    <p>Don't have an account? <a href="TaskHub-signup.html" class="SignUp Btn-Link">Sign Up</a></p>
+                    <p>Don't have an account? <a href="signup.html" class="SignUp Btn-Link">Sign Up</a></p>
                 </div>
             </form>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script src="scripts/signin.js"></script>
 </body>
-</html>
+</html

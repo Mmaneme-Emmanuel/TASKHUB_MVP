@@ -2,11 +2,14 @@
 from flask import Flask
 from flask_restful import Api
 from TaskHub_models import db
+from flask_cors import CORS
 
 # Create the Flask app
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+CORS(app)
 
 # Initialize the database with the Flask app
 db.init_app(app)

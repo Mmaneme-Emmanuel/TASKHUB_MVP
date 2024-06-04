@@ -2,6 +2,7 @@
 #This file is my Database Models
 
 from flask_sqlalchemy import SQLAlchemy
+import uuid
 # Create SQLAlchemy database instance
 db = SQLAlchemy()
 
@@ -9,7 +10,7 @@ db = SQLAlchemy()
 class User(db.Model):
     __tablename__ = 'users'
     
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.String, primary_key=True, default=lambda: str(uuid.uuid4()))
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     email = db.Column(db.String(150), unique=True, nullable=False)
@@ -18,6 +19,13 @@ class User(db.Model):
     
     def __repr__(self):
         return f"<User {self.username}>"
+    
+    def toDict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }
 
 # Define Task model
 class Task(db.Model):
@@ -29,3 +37,10 @@ class Task(db.Model):
     
     def __repr__(self):
         return f"<Task {self.task} by User {self.user_id}>"
+
+    def toDict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'task': self.task
+        }
