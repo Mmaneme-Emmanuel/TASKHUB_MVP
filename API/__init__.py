@@ -2,7 +2,7 @@
 
 from flask import Blueprint
 from flask_restful import Api
-from TaskHub_API import SignupResource, SigninResource, TodoResource
+from app import SignupResource, SigninResource, TodoResource
 
 api_bp = Blueprint('api', __name__)
 api = Api(api_bp)

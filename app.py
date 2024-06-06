@@ -61,7 +61,6 @@ class TodoResource(Resource):
             'tasks': tasks
             }, 200
 
-
     def post(self):
         data = request.get_json()
 
@@ -88,3 +87,9 @@ class TodoResource(Resource):
             'message': 'Task added successfully',
             'data': new_task.toDict()
         }, 201
+
+
+if __name__ == '__main__':
+    db.create_all()
+    with app.app_context():
+        app.run(debug=True, host='127.0.0.1', port=5000)
