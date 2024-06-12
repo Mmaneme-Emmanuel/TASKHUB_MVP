@@ -30,7 +30,7 @@ signupForm.addEventListener('submit', function (event) {
             console.log(data);
             alert("Sign Up Successfull! ✔");
             event.preventDefault()
-            window.location.href = "/signin.html";
+            window.location.href = "todo.html";
         })
         .catch(error => {
             alert(error.message);

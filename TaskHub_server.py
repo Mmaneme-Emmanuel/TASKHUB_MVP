@@ -1,8 +1,11 @@
 #!/usr/bin/python3
 from flask import Flask
+from flask_cors import CORS
 from flask_restful import Api
 from TaskHub_models import db
-from flask_cors import CORS
+from app import SignupResource, SigninResource, TodoResource
+
+
 
 # Create the Flask app
 app = Flask(__name__)
@@ -15,10 +18,8 @@ CORS(app)
 db.init_app(app)
 
 # Create the API object
+# Initialize Flask-RESTful API
 api = Api(app)
-
-# Import and add the API resources
-from app import SignupResource, SigninResource, TodoResource
 
 api.add_resource(SignupResource, '/api/signup')
 api.add_resource(SigninResource, '/api/signin')

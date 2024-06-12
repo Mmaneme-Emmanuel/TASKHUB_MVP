@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 #This is my API Resources
 
-from flask import request, session
+from flask import request
 from flask_restful import Resource
 from werkzeug.security import generate_password_hash, check_password_hash
 from TaskHub_models import db, User, Task
@@ -87,9 +87,3 @@ class TodoResource(Resource):
             'message': 'Task added successfully',
             'data': new_task.toDict()
         }, 201
-
-
-if __name__ == '__main__':
-    db.create_all()
-    with app.app_context():
-        app.run(debug=True, host='127.0.0.1', port=5000)
